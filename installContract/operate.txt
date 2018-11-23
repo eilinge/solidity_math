@@ -5,6 +5,7 @@ npm install -g web3
 npm install -g xhr2-cookies
 npm install -g http
 npm install -g solc //solcjs
+npm install -g crypto-js
 
 
 solcjson --abi --bin math.sol
