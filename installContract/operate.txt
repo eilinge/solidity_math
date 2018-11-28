@@ -12,10 +12,10 @@ solcjson --abi --bin math.sol
 
 truffle(develop) >>
 abi = math_sol_Math.bin
+instance = web3.eth.Contract(abi,address)
 
-c1 = web3.eth.contract(abi)
-
-instance = c1.at("call.js/address = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';")
+//c1 = web3.eth.contract(abi)
+//instance = c1.at("call.js/address = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';")
 
 instance.AddFunc(10.20).toString
 
