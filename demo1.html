@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+/*jQuery 入口函数:为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。
+$(function(){
+});*/
+$(document).ready(function(){
+  $(".eilin").click(function(){
+    //$(this).hide(function(){
+		$('p').toggle(1000,function(){
+		alert('i love duzi')});
+  });
+});
+</script>
+</head>
+<body>
+<p>如果你点我，我就会消失。</p>
+<p>继续点我!</p>
+<p>接着点我!</p>
+<button class='eilin'>duzi</button>
+</body>
+</html>
+
+鼠标事件:
+	click
+	dblclick
+	mouseenter:鼠标进入
+	mouseleave:鼠标离开
+	hover:鼠标悬停
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("p").mouseenter(function(){
+    $("p").css("background-color","yellow");
+  });
+  $("p").mouseleave(function(){
+    $("p").css("background-color","lightgray");
+  });
+  $("#eilin").click(function(){
+    $("p").css("background-color","red");
+  });
+  $(".eiling").dblclick(function(){
+    $("p").css("background-color","black");
+  });
+  $("p").hover(function(){
+    $("p").css("background-color","blue");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>鼠标移动到该段落。</p>
+<button id='eilin'>单击</button>
+<button class='eiling'>双击</button>
+</body>
+</html>
+
+键盘事件
+	keypress:键被按下
+	keydown:键被按下的过程
+	keyup:键盘被松开
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+i= 0;
+$(document).ready(function(){
+  $("input").keydown(function(){
+    $("input").css("background-color","yellow");
+  });
+  $("input").keyup(function(){
+    $("input").css("background-color","pink");
+  });
+  $("input").keypress(function(){
+    $("span").text(i+1);
+  });
+});
+</script>
+</head>
+<body>
+
+输入你的名字: <input type="text">
+<p>在以上输入框中输入你的名字。在按键按下后输入框背景颜色会改变。</p>
+<p>键盘按下的次数:<span>0</span></p>
+</body>
+</html>
+
+表单事件
+	submit:当提交表单时，会发生 submit 事件。该事件只适用于 <form> 元素。
+	blur:当失去焦点时发生 blur 事件
+	focus:获得焦点时发生 focus 事件
+	change:字段改变时警报文本
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("form").submit(function(){
+    alert("提交");
+  });
+  $("input[name='FirstName']").change(function(){
+    alert("文本已被修改");
+  });
+  $("input[name='LastName']").focus(function(){
+    $("span").css("display","inline").fadeOut(2000);
+  });
+  $("input").blur(function(){
+    alert("输入框失去了焦点");
+  });
+});
+</script>
+</head>
+<body>
+
+<form action="">
+First name: 
+<input type="text" name="FirstName" value="Mickey"><br>
+Last name: 
+<input type="text" name="LastName" value="Mouse"><br>
+<input type="submit" value="提交">
+<p><span>12</span></p>
+</form> 
+
+</body>
+</html>
+
+文档/窗口事件
+	load:当指定的元素已加载时，会发生 load 事件(适用于任何带有 URL的元素（比如图像、脚本、框架、内联框架）以及 window 对象)
+	resize:当调整浏览器窗口大小时，发生 resize 事件
+	scroll:当用户滚动指定的元素时，会发生 scroll 事件(所有可滚动的元素和 window 对象（浏览器窗口）)
+	unload:当离开页面时，显示提示消息
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+x=0;
+y=0;
+$(document).ready(function(){
+  $("div").scroll(function(){
+    $("span").text(x+=1);
+  });
+  $(window).unload(function(){
+  	alert('unload');
+  });
+  $(window).resize(function(){
+  	$('span').text(y+=1);
+  });
+  $('image').load(function(){
+  	alert('load successful');
+  });
+});
+</script>
+</head>
+<body>
+
+<p>尝试滚动 div 中的滚动条</p>
+<div style="border:1px solid black;width:200px;height:100px;overflow:scroll;">菜鸟教程 —— 学的不仅是技术，更是梦想！菜鸟教程 —— 学的不仅是技术，更是梦想！
+<br><br>
+菜鸟教程 —— 学的不仅是技术，更是梦想！菜鸟教程 —— 学的不仅是技术，更是梦想！</div>
+<p>滚动了 <span>0</span> 次。</p>
+<p>当你点击 <a href="//www.runoob.com">这个链接</a>, 或者关闭窗口，alert 窗口会弹出。</p>
+<image src="//www.runoob.com/wp-content/uploads/2015/11/rock600x400.jpg" alt="图片文字描述" width="304" height="236"/>
+</body>
+</html>
+
+
+链接（chaining）的技术，允许我们在相同的元素上运行多条 jQuery 命令，一条接着另一条
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#p1").css("color","red").slideUp(2000).slideDown(2000);
+  });
+});
+
+获得内容:
+	text() - 设置或返回所选元素的文本内容
+	html() - 设置或返回所选元素的内容（包括 HTML 标记）
+	val() - 设置或返回表单字段的值
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text(function(i,origText){//将test1的文本作为参数传入origText
+      return "旧文本: " + origText + " 新文本: Hello world! (index: " + i + ")"; 
+    });
+  });
+
+  $("#btn2").click(function(){
+	$("#test1").text('l ove lin');//设置文本值
+  });
+  $("#btn2").click(function(){
+	$("#test1").text();//显示文本值
+  });
+
+});
+</script>
+</head>
+
+<body>
+<p id="test1">这是一个有 <b>粗体</b> 字的段落。</p>
+<p id="test2">这是另外一个有 <b>粗体</b> 字的段落。</p>
+<button id="btn1">显示 新/旧 文本</button>
+<button id="btn2">显示 新/旧 HTML</button>
+</body>
+</html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text(function(i,origText){//将test1的文本作为参数传入origText
+      return "旧文本: " + origText + " 新文本: Hello world! (index: " + i + ")"; 
+    });
+  });
+
+  $("#btn2").click(function(){
+	$("#test1").text('l ove lin');//设置文本值
+  });
+  $("#btn2").click(function(){
+	$("#test1").text();//显示文本值
+  });
+  $("#btn3").click(function(){
+    $("#runoob").attr({
+      "href" : "http://www.runoob.com/jquery",
+      "title" : "jQuery 教程"
+    });
+	// 通过修改的 title 值来修改链接名称
+	title =  $("#runoob").attr('title');
+	$("#runoob").html(title);
+  	});
+  $("#btn4").click(function(){
+        $("#runoob1").attr("href", function(i, origValue){
+			alert(i,origValue);//attr() 的回调函数:被选元素列表中当前元素的下标，以及原始（旧的）值
+            return origValue + "/jquery";
+        });
+    });
+});
+</script>
+</head>
+
+<body>
+<p id="test1">这是一个有 <b>粗体</b> 字的段落。</p>
+<p id="test2">这是另外一个有 <b>粗体</b> 字的段落。</p>
+<button id="btn1">显示 新/旧 文本</button>
+<button id="btn2">显示 新/旧 HTML</button>
+<p><a href="//www.runoob.com" id="runoob">菜鸟教程</a></p>
+<button id='btn3'>修改 href 和 title</button>
+<p><a href="//www.runoob.com" id="runoob1">菜鸟教程</a></p>
+<button id='btn4'>修改 href 值</button>
+</body>
+</html>
+
+	append() - 在被选元素的结尾插入内容
+	prepend() - 在被选元素的开头插入内容
+	after() - 在被选元素之后插入内容
+	before() - 在被选元素之前插入内容
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$('#btn1').click(function(){
+		$('p').prepend('hha');
+	});
+});
+$(document).ready(function(){
+	$('#btn2').click(function(){
+		$('p').append('hha');
+	});
+});
+function beforeText(){
+	var txt1="<p>文本。</p>";              // 使用 HTML 标签创建文本
+	var txt2=$("<p></p>").text("文本。");  // 使用 jQuery 创建文本
+	var txt3=document.createElement("p");
+	txt3.innerHTML="文本。";               // 使用 DOM 创建文本 text with DOM
+	$("body").before(txt1,txt2,txt3);        // 追加新元素
+};
+function afterText(){
+	var txt1="<b>I </b>";                    // 使用 HTML 创建元素
+	var txt2=$("<i></i>").text("love ");     // 使用 jQuery 创建元素
+	var txt3=document.createElement("big");  // 使用 DOM 创建元素
+	txt3.innerHTML="jQuery!";
+	$("img").after(txt1,txt2,txt3);          // 在图片后添加文本
+};
+</script>
+</head>
+<body>
+
+<p>这是一个段落。</p>
+<img src='images/logo.png/'/>
+<button id='btn1'>追加文本1</button>
+<button id='btn2'>追加文本2</button>
+<button onclick="beforeText()">追加文本</button>
+<button onclick="afterText()">追加文本</button>	
+
+</body>
+</html>
+
+
+	remove() - 删除被选元素（及其子元素）
+	mpty() - 从被选元素中删除子元素
+	$("p").remove(".italic"):过滤被删除的元素
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").remove(".italic");
+  });
+  $("#btn2").click(function(){
+    $("div").remove(".italic");
+  });
+  $("#btn3").click(function(){
+    $("div").empty();
+  });
+});
+</script>
+</head>
+<body>
+
+<p>这是一个段落。</p>
+<p class="italic"><i>这是另外一个段落。</i></p>
+<p class="italic"><i>这是另外一个段落。</i></p>
+<button id='btn1'>移除所有  class="italic"的p元素。</button>
+<button id='btn2'>移除所有的p元素。</button>
+<button id='btn3'>清空所有的p元素。</button>
+<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+
+这是 div 中的一些文本。
+<p>这是在 div 中的一个段落。</p>
+<p>这是在 div 中的另外一个段落。</p>
+
+</div>
+
+</body>
+</html>
+
+
+	addClass() - 向被选元素添加一个或多个类
+	removeClass() - 从被选元素删除一个或多个类
+	toggleClass() - 对被选元素进行添加/删除类的切换操作
+	css() - 设置或返回样式属性
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("h3,span").addClass("blue important");
+  });
+  $("#btn2").click(function(){
+	$("h3,span").removeClass("blue");
+  });
+  $("#btn3").click(function(){
+	$("h3,span").toggle("blue");
+  });
+  $("#btn4").click(function(){
+    $("p").css({"background-color":"yellow","font-size":"200%"});
+  });
+});
+</script>
+<style type="text/css">
+.important
+{
+	font-weight:bold;
+	font-size:xx-large;
+}
+.blue
+{
+	color:blue;
+}
+</style>
+</head>
+<body>
+	
+<p style="background-color:#ff0000">这是一个段落。</p>
+<p style="background-color:#00ff00">这是一个段落。</p>
+<h3>标题 3</h3>
+<span>i love duzi</span><br>
+<button id='btn1'>从元素中添加 class</button>
+<button id='btn2'>从元素中移除 class</button>
+<button id='btn3'>从元素中切换 class</button>
+<button id='btn4'>设置p样式</button>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+//load() 方法从服务器加载数据，并把返回的数据放入被选元素中
+//function(agr1:响应文本,agr2:响应的状态,agr3:报错信息[object object])
+/*
+responseTxt - 包含调用成功时的结果内容
+statusTXT - 包含调用的状态
+xhr - 包含 XMLHttpRequest 对象
+*/
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#div1").load("/try/ajax/demo_test.txt",function(responseTxt,statusTxt,xhr){
+      if(statusTxt=="success")
+        alert(xhr,"外部内容加载成功!");
+      if(statusTxt=="error")
+        alert("Error: "+xhr.status+": "+xhr.statusText);
+    });
+  $("#btn2").click(function(){
+	$("#div1").load("/try/ajax/demo_test.txt1",function(responseTxt,statusTxt,xhr){
+      if(statusTxt=="success")
+        alert(xhr,"外部内容加载成功!");
+      if(statusTxt=="error")
+        alert("Error: "+xhr.status+": "+xhr.statusText);//Error: 404: error
+    });
+});
+});
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>使用 jQuery AJAX 修改该文本</h2></div>
+<button id='btn1'>获取外部内容1</button>
+<button id='btn2'>获取外部内容2</button>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<p>
+demo_test.php :
+<?php
+echo '这是个从PHP文件中读取的数据。';
+?>
+</p>
+<script>
+/*
+两种在客户端和服务器端进行请求-响应的常用方法是：GET 和 POST。
+	GET - 从指定的资源请求数据
+	POST - 向指定的资源提交要处理的数据
+GET 基本上用于从服务器获得（取回）数据。注释：GET 方法可能返回缓存数据。
+POST 也可用于从服务器获取数据。不过，POST 方法不会缓存数据，并且常用于连同请求一起发送数据。
+*/
+$(document).ready(function(){
+	$("#btn1").click(function(){
+		$.get("/try/ajax/demo_test.php",function(data,status){
+			alert("数据: " + data + "\n状态: " + status);//success
+		});
+	});
+	$("#btn2").click(function(){
+		$.post("/try/ajax/demo_test_post.php",{
+			name:"菜鸟教程",
+			url:"http://www.runoob.com"
+		},
+		function(data,status){
+			alert("数据: \n" + data + "\n状态: " + status);
+		});
+	});
+});
+/*
+data:
+	name:"菜鸟教程",
+	url:"http://www.runoob.com"
+*/
+</script>
+</head>
+<body>
+
+<button id='btn1'>发送一个 HTTP GET  请求页面并获取返回内容</button>
+<button id='btn2'>发送一个 HTTP POST 请求页面并获取返回内容</button>
+
+</body>
+</html>

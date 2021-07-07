@@ -1,0 +1,6 @@
+geth --testnet --fast --cache=512 console
+
+geth attach  ipc:\\.\pipe\geth.ipc
+
+personal.newAccount()
+eth.getBalance(eth.accounts[0])
